@@ -1,1 +1,1 @@
-# Windows98
+# Project: Windows98 Replica
