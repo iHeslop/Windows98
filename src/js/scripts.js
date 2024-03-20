@@ -12,16 +12,14 @@ function updateDateTime() {
 setInterval(updateDateTime, 1000);
 
 //Start Menu Functionality
-
 const startBtn = document.getElementById("startBtn");
 const menu = document.getElementById("menu");
 
 startBtn.addEventListener("click", () => {
   if (!startBtn.classList.contains("start-menu__border")) {
-    startBtn.classList.add("start-menu__border");
     menu.style.display = "flex";
   } else {
-    startBtn.classList.remove("start-menu__border");
     menu.style.display = "none";
   }
+  startBtn.classList.toggle("start-menu__border");
 });
