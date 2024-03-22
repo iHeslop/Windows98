@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/css/styles.css" />
     <link rel="icon" href="./assets/images/Windows_Logo_(1992-2001).svg" />
-    <script src="./src/js/scripts.js" defer></script>
+    <script type="module" src="./src/js/scripts.js" defer></script>
     <title>Windows98 | Replica</title>
   </head>
   <body>
@@ -36,7 +36,7 @@
         />
         <h3 class="desktop-icon-text">Notepad</h3>
       </div>
-      <div class="desktop-icon">
+      <div class="desktop-icon calculator-icon">
         <img
           id="calculator"
           class="desktop-icon-image"
@@ -47,12 +47,72 @@
       </div>
       <div class="desktop-icon">
         <img
-          id="tictac"
+          id="drum"
           class="desktop-icon-image"
-          src="./assets/logos/tic-tac-toe.png"
-          alt="tictac"
+          src="./assets/logos/music.png"
+          alt="drum"
         />
-        <h3 class="desktop-icon-text">Tic-Tac-Toe</h3>
+        <h3 class="desktop-icon-text">Drum Kit</h3>
+      </div>
+    </section>
+
+    <section class="application application-calculator" id="calculator">
+      <div class="calculator-topbar topbar">
+        <div class="left-items">
+          <img
+            id="calculatorIcon"
+            class="calculator-icon"
+            src="./assets/logos/calculator.png"
+            alt="calculator"
+          />
+          <h3>Calculator</h3>
+        </div>
+        <div class="right-items">
+          <button class="calculator-control">_</button>
+          <button class="calculator-control btn-close">x</button>
+        </div>
+      </div>
+
+      <div class="calculator-menu">
+        <p>Edit</p>
+        <p>View</p>
+        <p>Help</p>
+      </div>
+
+      <div class="calculator-display" id="calculatorDisplay">0.</div>
+
+      <div class="calculator-buttons-menu">
+        <button class="calculator-clear">C</button>
+        <button class="calculator-clearlast">CE</button>
+      </div>
+
+      <div class="calculator-buttons">
+        <button class="text__lightblue calculator-btn">7</button>
+        <button class="text__lightblue calculator-btn">8</button>
+        <button class="text__lightblue calculator-btn">9</button>
+        <button class="text__red calculator-btn">/</button>
+        <button class="text__darkblue">sqrt</button>
+      </div>
+      <div class="calculator-buttons">
+        <button class="text__lightblue calculator-btn">4</button>
+        <button class="text__lightblue calculator-btn">5</button>
+        <button class="text__lightblue calculator-btn">6</button>
+        <button class="text__red calculator-btn">*</button>
+        <button class="text__darkblue">%</button>
+      </div>
+      <div class="calculator-buttons">
+        <button class="text__lightblue calculator-btn">1</button>
+        <button class="text__lightblue calculator-btn">2</button>
+        <button class="text__lightblue calculator-btn">3</button>
+        <button class="text__red calculator-btn">-</button>
+        <button class="text__darkblue">1/x</button>
+      </div>
+      <div class="calculator-buttons">
+        <button class="text__lightblue calculator-btn">0</button>
+        <button class="text__lightblue">+/-</button>
+        <button class="text__lightblue calculator-btn">.</button>
+        <button class="text__red calculator-btn">+</button>
+        <button class="text__red calculator-btn-result">=</button>
       </div>
     </section>
 

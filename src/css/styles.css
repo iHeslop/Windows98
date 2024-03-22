@@ -5,6 +5,16 @@
   font-family: sans-serif;
 }
 
+.text__lightblue {
+  color: #1d1df5;
+}
+.text__darkblue {
+  color: #0c0c7f;
+}
+.text__red {
+  color: red;
+}
+
 .bg-image {
   background-image: url("../../assets/images/windows-98-background.jpeg");
   width: 100%;
@@ -175,6 +185,115 @@
   color: black;
   text-shadow: 1px 1px white;
   font-size: 16px;
+}
+
+.application {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #bdbebd;
+  border-top: 4px solid white;
+  border-left: 4px solid white;
+  border-bottom: 4px solid #808080;
+  border-right: 4px solid #808080;
+}
+.application-calculator {
+  display: none;
+  height: 370px;
+  width: 320px;
+}
+
+.calculator-buttons {
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-right: 10px;
+}
+.calculator-buttons button {
+  width: 50px;
+  height: 40px;
+  background-color: #bdbebd;
+  font-size: 16px;
+  font-weight: bold;
+  border-top: 4px solid white;
+  border-left: 4px solid white;
+  border-bottom: 4px solid #808080;
+  border-right: 4px solid #808080;
+  cursor: pointer;
+}
+.calculator-buttons-menu {
+  display: flex;
+  justify-content: right;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+.calculator-buttons-menu button {
+  width: 60px;
+  height: 30px;
+  background-color: #bdbebd;
+  font-size: 16px;
+  font-weight: bold;
+  color: #7f1b1b;
+  border-top: 4px solid white;
+  border-left: 4px solid white;
+  border-bottom: 4px solid #808080;
+  border-right: 4px solid #808080;
+  cursor: pointer;
+}
+.calculator-display {
+  margin: 10px;
+  background-color: white;
+  border-top: 4px solid #808080;
+  border-left: 4px solid #808080;
+  border-bottom: 4px solid lightgrey;
+  border-right: 4px solid lightgray;
+  text-align: right;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.calculator-menu {
+  margin: 3px;
+  display: flex;
+  gap: 10px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #808080;
+}
+.calculator-control {
+  font-size: 15px;
+  width: 25px;
+  font-weight: 1000;
+  background-color: #bdbebd;
+  border-top: 3px solid white;
+  border-left: 3px solid white;
+  border-bottom: 3px solid #808080;
+  border-right: 3px solid #808080;
+}
+.calculator-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #040381;
+  color: white;
+  padding-left: 5px;
+  padding-right: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+  display: flex;
+}
+
+.btn-close {
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=styles.css.map */
