@@ -86,17 +86,11 @@
 }
 
 .menu {
-  width: 300px;
   z-index: 1;
-  background-color: #bdbebd;
   display: none;
   position: absolute;
   left: 5px;
   bottom: 42px;
-  border-top: 3px solid white;
-  border-left: 3px solid white;
-  border-bottom: 3px solid #808080;
-  border-right: 3px solid #808080;
   animation: fadeIn 0.3s ease-out;
   animation-fill-mode: forwards;
   &-item {
@@ -126,18 +120,35 @@
   &-list {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    height: 100%;
+    width: 250px;
+    background-color: #bdbebd;
+    border-top: 3px solid white;
+    border-bottom: 3px solid #808080;
+    border-right: 3px solid #808080;
   }
   &-banner {
     display: flex;
     padding: 8px;
     background-image: linear-gradient(#040381, #1083cf);
-    border: 0.5px solid white;
+    border-right: 2px solid white;
+    border-top: 3px solid white;
+    border-left: 3px solid white;
+    border-bottom: 3px solid #808080;
     &-text {
       color: white;
       writing-mode: vertical-rl;
       text-orientation: sideways-right;
       transform: rotate(180deg);
+    }
+  }
+  &-sub {
+    display: none;
+    &-item {
+      &:hover {
+        background-color: #808080;
+        cursor: pointer;
+      }
     }
   }
 }
@@ -207,10 +218,38 @@
   border-left: 4px solid white;
   border-bottom: 4px solid #808080;
   border-right: 4px solid #808080;
+  &-notepad {
+    position: absolute;
+    display: none;
+  }
   &-calculator {
+    position: absolute;
     display: none;
     height: 370px;
     width: 320px;
+  }
+  &-drumkit {
+    position: absolute;
+    display: none;
+  }
+  &-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #040381;
+    color: white;
+    padding-left: 5px;
+    padding-right: 10px;
+  }
+  &-control {
+    font-size: 15px;
+    width: 25px;
+    font-weight: 1000;
+    background-color: #bdbebd;
+    border-top: 3px solid white;
+    border-left: 3px solid white;
+    border-bottom: 3px solid #808080;
+    border-right: 3px solid #808080;
   }
 }
 
@@ -275,24 +314,61 @@
     padding-bottom: 5px;
     border-bottom: 3px solid #808080;
   }
-  &-control {
-    font-size: 15px;
-    width: 25px;
-    font-weight: 1000;
-    background-color: #bdbebd;
-    border-top: 3px solid white;
-    border-left: 3px solid white;
-    border-bottom: 3px solid #808080;
-    border-right: 3px solid #808080;
+}
+
+.drum {
+  &-icon {
+    margin: 5px;
+    height: 35px;
   }
-  &-topbar {
+  &-list {
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
+    padding: 10px;
+  }
+  &-key {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    background-color: #040381;
-    color: white;
-    padding-left: 5px;
-    padding-right: 10px;
+    height: 100px;
+    width: 100px;
+    border-top: 4px solid white;
+    border-left: 4px solid white;
+    border-bottom: 4px solid #808080;
+    border-right: 4px solid #808080;
+    & kbd {
+      font-weight: bold;
+      font-size: 24px;
+    }
+    & span {
+      margin-top: 5px;
+      font-size: 16px;
+    }
+  }
+}
+
+.notepad {
+  &-icon {
+    margin: 5px;
+    height: 35px;
+  }
+  &-menu {
+    margin: 3px;
+    display: flex;
+    gap: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
+  }
+  &-display {
+    background-color: white;
+    height: 100%;
+    margin: 5px;
+    border-top: 4px solid #808080;
+    border-left: 4px solid #808080;
+    border-bottom: 4px solid lightgrey;
+    border-right: 4px solid lightgray;
+    padding: 5px;
   }
 }
 
@@ -302,6 +378,14 @@
 
 .active {
   display: flex;
+}
+
+.playing {
+  transform: scale(1);
+  border-top: 4px solid #808080;
+  border-left: 4px solid #808080;
+  border-bottom: 4px solid white;
+  border-right: 4px solid white;
 }
 
 .btn {

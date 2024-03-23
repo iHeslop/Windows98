@@ -20,34 +20,30 @@
     <section class="desktop">
       <div class="desktop-icon">
         <img
-          id="recycle"
           class="desktop-icon-image"
           src="./assets/logos/recycle_bin.png"
           alt="recycle"
         />
         <h3 class="desktop-icon-text">Recycle Bin</h3>
       </div>
-      <div class="desktop-icon">
+      <div class="desktop-icon" id="iconNotepad">
         <img
-          id="notepad"
           class="desktop-icon-image"
           src="./assets/logos/notepad.png"
           alt="notepad"
         />
         <h3 class="desktop-icon-text">Notepad</h3>
       </div>
-      <div class="desktop-icon calculator-icon">
+      <div class="desktop-icon" id="iconCalculator">
         <img
-          id="calculator"
           class="desktop-icon-image"
           src="./assets/logos/calculator.png"
           alt="calculator"
         />
         <h3 class="desktop-icon-text">Calculator</h3>
       </div>
-      <div class="desktop-icon">
+      <div class="desktop-icon" id="iconDrumKit">
         <img
-          id="drum"
           class="desktop-icon-image"
           src="./assets/logos/music.png"
           alt="drum"
@@ -56,8 +52,11 @@
       </div>
     </section>
 
-    <section class="application application-calculator" id="calculator">
-      <div class="calculator-topbar topbar">
+    <section
+      class="application application-calculator"
+      id="calculatorApplication"
+    >
+      <div class="application-topbar topbar" id="topBarCalculator">
         <div class="left-items">
           <img
             id="calculatorIcon"
@@ -68,8 +67,10 @@
           <h3>Calculator</h3>
         </div>
         <div class="right-items">
-          <button class="calculator-control">_</button>
-          <button class="calculator-control btn-close">x</button>
+          <button class="application-control">_</button>
+          <button class="application-control btn-close" id="closeCalculator">
+            x
+          </button>
         </div>
       </div>
 
@@ -116,12 +117,104 @@
       </div>
     </section>
 
+    <section class="application application-drumkit" id="drumkit">
+      <div class="application-topbar topbar" id="topBarDrumKit">
+        <div class="left-items">
+          <img
+            id="drumIcon"
+            class="drum-icon"
+            src="./assets/logos/music.png"
+            alt="drum"
+          />
+          <h3>Drum Kit</h3>
+        </div>
+        <div class="right-items">
+          <button class="application-control">_</button>
+          <button class="application-control btn-close" id="closeDrumKit">
+            x
+          </button>
+        </div>
+      </div>
+      <div class="drum-list">
+        <div data-key="65" class="drum-key">
+          <kbd>A</kbd>
+          <span class="sound">clap</span>
+        </div>
+        <div data-key="83" class="drum-key">
+          <kbd>S</kbd>
+          <span class="sound">hihat</span>
+        </div>
+        <div data-key="68" class="drum-key">
+          <kbd>D</kbd>
+          <span class="sound">kick</span>
+        </div>
+        <div data-key="70" class="drum-key">
+          <kbd>F</kbd>
+          <span class="sound">openhat</span>
+        </div>
+        <div data-key="71" class="drum-key">
+          <kbd>G</kbd>
+          <span class="sound">boom</span>
+        </div>
+        <div data-key="72" class="drum-key">
+          <kbd>H</kbd>
+          <span class="sound">ride</span>
+        </div>
+        <div data-key="74" class="drum-key">
+          <kbd>J</kbd>
+          <span class="sound">snare</span>
+        </div>
+        <div data-key="75" class="drum-key">
+          <kbd>K</kbd>
+          <span class="sound">tom</span>
+        </div>
+        <div data-key="76" class="drum-key">
+          <kbd>L</kbd>
+          <span class="sound">tink</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="application application-notepad" id="notepad">
+      <div class="application-topbar topbar" id="topBarNotepad">
+        <div class="left-items">
+          <img
+            id="notepadIcon"
+            class="notepad-icon"
+            src="./assets/logos/notepad.png"
+            alt="notepad"
+          />
+          <h3>Notepad</h3>
+        </div>
+        <div class="right-items">
+          <button class="application-control">_</button>
+          <button class="application-control btn-close" id="closeNotepad">
+            x
+          </button>
+        </div>
+      </div>
+
+      <div class="notepad-menu">
+        <p>File</p>
+        <p>Edit</p>
+        <p>Search</p>
+        <p>Help</p>
+      </div>
+
+      <textarea
+        class="notepad-display"
+        id="notepadDisplay"
+        rows="20"
+        cols="60"
+      ></textarea>
+    </section>
+
     <section class="menu" id="menu">
       <div class="menu-banner">
         <h3 class="menu-banner-text">Windows <span>98</span></h3>
       </div>
       <div class="menu-list">
-        <div class="menu-item menu-item-options">
+        <div class="menu-item">
           <div class="left-items">
             <img
               id="programsLogo"
@@ -130,13 +223,6 @@
               class="menu-item-logo"
             />
             <h4>Programs</h4>
-          </div>
-          <div class="right-items">
-            <img
-              class="menu-item-arrow"
-              src="./assets/TriangleArrow-Right.svg"
-              alt="arrow"
-            />
           </div>
         </div>
         <div class="menu-item">
@@ -168,7 +254,7 @@
             />
           </div>
         </div>
-        <div class="menu-item menu-item-options">
+        <div class="menu-item">
           <div class="left-items">
             <img
               id="gamesLogo"
@@ -177,13 +263,6 @@
               class="menu-item-logo"
             />
             <h4>Games</h4>
-          </div>
-          <div class="right-items">
-            <img
-              class="menu-item-arrow"
-              src="./assets/TriangleArrow-Right.svg"
-              alt="arrow"
-            />
           </div>
         </div>
         <div class="menu-item">
@@ -253,6 +332,38 @@
           </div>
         </div>
       </div>
+      <div class="menu-list menu-sub">
+        <div class="menu-item menu-sub-item">
+          <div class="left-items">
+            <img
+              src="./assets/logos/notepad.png"
+              alt="notepad-logo"
+              class="menu-item-logo"
+            />
+            <h4>Notepad</h4>
+          </div>
+        </div>
+        <div class="menu-item menu-sub-item">
+          <div class="left-items">
+            <img
+              src="./assets/logos/calculator.png"
+              alt="calculator"
+              class="menu-item-logo"
+            />
+            <h4>Calculator</h4>
+          </div>
+        </div>
+        <div class="menu-item menu-sub-item">
+          <div class="left-items">
+            <img
+              src="./assets/logos/music.png"
+              alt="drumkit-logo"
+              class="menu-item-logo"
+            />
+            <h4>Drum Kit</h4>
+          </div>
+        </div>
+      </div>
     </section>
 
     <footer class="taskbar" id="taskbar">
@@ -266,5 +377,15 @@
       </div>
       <div class="taskbar-clock" id="clock"></div>
     </footer>
+
+    <audio data-key="65" src="./assets/sounds/clap.wav"></audio>
+    <audio data-key="83" src="./assets/sounds/hihat.wav"></audio>
+    <audio data-key="68" src="./assets/sounds/kick.wav"></audio>
+    <audio data-key="70" src="./assets/sounds/openhat.wav"></audio>
+    <audio data-key="71" src="./assets/sounds/boom.wav"></audio>
+    <audio data-key="72" src="./assets/sounds/ride.wav"></audio>
+    <audio data-key="74" src="./assets/sounds/snare.wav"></audio>
+    <audio data-key="75" src="./assets/sounds/tom.wav"></audio>
+    <audio data-key="76" src="./assets/sounds/tink.wav"></audio>
   </body>
 </html>

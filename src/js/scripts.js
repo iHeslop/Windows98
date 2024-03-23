@@ -5,64 +5,148 @@ import {
   clearDisplay,
 } from "./math-utils.js";
 
+import { playSound } from "./drum-utils.js";
+
 //Application Window Functionality
-let mousePosition;
-let offset = [0, 0];
+
+const calculator = document.getElementById("calculatorApplication");
+const drumKit = document.getElementById("drumkit");
+const notepad = document.getElementById("notepad");
+
+let activeWindow = null;
+let mousePositions = {};
+let offsets = {};
 let isDown = false;
 
-const calculator = document.querySelector(".application");
-const topBar = document.querySelector(".topbar");
-
-topBar.addEventListener(
-  "mousedown",
-  function (e) {
-    isDown = true;
-    offset = [
-      calculator.offsetLeft - e.clientX,
-      calculator.offsetTop - e.clientY,
-    ];
-  },
-  true
-);
-
-document.addEventListener(
-  "mouseup",
-  function () {
-    isDown = false;
-  },
-  true
-);
-
-document.addEventListener(
-  "mousemove",
-  function (event) {
-    event.preventDefault();
-    if (isDown) {
-      mousePosition = {
-        x: event.clientX,
-        y: event.clientY,
-      };
-      calculator.style.left = mousePosition.x + offset[0] + "px";
-      calculator.style.top = mousePosition.y + offset[1] + "px";
-    }
-  },
-  true
-);
-
-//Close and Open Applications
-const close = document.querySelector(".btn-close");
-const icon = document.querySelector(".calculator-icon");
-
-close.addEventListener("click", (e) => {
-  e.preventDefault();
-  calculator.classList.remove("active");
-  calculator.classList.add("hidden");
+calculator.addEventListener("mousedown", () => {
+  calculator.style.zIndex = 2;
+  drumKit.style.zIndex = 1;
+  notepad.style.zIndex = 1;
 });
 
-icon.addEventListener("click", (e) => {
+drumKit.addEventListener("mousedown", () => {
+  calculator.style.zIndex = 1;
+  drumKit.style.zIndex = 2;
+  notepad.style.zIndex = 1;
+});
+
+notepad.addEventListener("mousedown", () => {
+  calculator.style.zIndex = 1;
+  drumKit.style.zIndex = 1;
+  notepad.style.zIndex = 2;
+});
+
+function handleMouseDown(windowId, element, e) {
+  isDown = true;
+  activeWindow = windowId;
+  offsets[windowId] = [
+    element.offsetLeft - e.clientX,
+    element.offsetTop - e.clientY,
+  ];
+}
+
+function handleMouseMove(windowId, element, e) {
   e.preventDefault();
+  if (isDown && activeWindow === windowId) {
+    mousePositions[windowId] = {
+      x: e.clientX,
+      y: e.clientY,
+    };
+    element.style.left =
+      mousePositions[windowId].x + offsets[windowId][0] + "px";
+    element.style.top =
+      mousePositions[windowId].y + offsets[windowId][1] + "px";
+  }
+}
+
+function handleMouseUp() {
+  isDown = false;
+  activeWindow = null;
+}
+
+function initializeWindowEvents(windowId, element, topBar) {
+  topBar.addEventListener(
+    "mousedown",
+    function (e) {
+      handleMouseDown(windowId, element, e);
+    },
+    true
+  );
+
+  document.addEventListener(
+    "mousemove",
+    function (e) {
+      handleMouseMove(windowId, element, e);
+    },
+    true
+  );
+
+  document.addEventListener("mouseup", handleMouseUp, true);
+}
+
+const topBarCalculator = document.getElementById("topBarCalculator");
+initializeWindowEvents("calculator", calculator, topBarCalculator);
+
+const topBarDrumKit = document.getElementById("topBarDrumKit");
+initializeWindowEvents("drumKit", drumKit, topBarDrumKit);
+
+const topBarNotepad = document.getElementById("topBarNotepad");
+initializeWindowEvents("notepad", notepad, topBarNotepad);
+
+//Close and Open Applications
+const closeButtonCalculator = document.getElementById("closeCalculator");
+const closeButtonDrumKit = document.getElementById("closeDrumKit");
+const closeButtonNotepad = document.getElementById("closeNotepad");
+const iconCalculator = document.getElementById("iconCalculator");
+const iconDrumKit = document.getElementById("iconDrumKit");
+const iconNotepad = document.getElementById("iconNotepad");
+
+const textNotepad = document.getElementById("notepadDisplay");
+
+closeButtonCalculator.addEventListener("click", (e) => {
+  e.preventDefault();
+  calculator.classList.add("hidden");
+  calculator.classList.remove("active");
+});
+
+closeButtonDrumKit.addEventListener("click", (e) => {
+  e.preventDefault();
+  drumKit.classList.add("hidden");
+  drumKit.classList.remove("active");
+});
+
+closeButtonNotepad.addEventListener("click", (e) => {
+  e.preventDefault();
+  notepad.classList.add("hidden");
+  notepad.classList.remove("active");
+});
+
+iconDrumKit.addEventListener("click", (e) => {
+  e.preventDefault();
+  drumKit.style.zIndex = 2;
+  calculator.style.zIndex = 1;
+  notepad.style.zIndex = 1;
+  drumKit.classList.remove("hidden");
+  drumKit.classList.add("active");
+});
+
+iconCalculator.addEventListener("click", (e) => {
+  e.preventDefault();
+  calculator.style.zIndex = 2;
+  drumKit.style.zIndex = 1;
+  notepad.style.zIndex = 1;
   calculator.classList.remove("hidden");
   calculator.classList.add("active");
+});
+
+iconNotepad.addEventListener("click", (e) => {
+  e.preventDefault();
+  calculator.style.zIndex = 1;
+  drumKit.style.zIndex = 1;
+  notepad.style.zIndex = 2;
+  notepad.classList.remove("hidden");
+  notepad.classList.add("active");
+  textNotepad.focus();
 });
 
 //Time Setting
@@ -81,14 +165,31 @@ setInterval(updateDateTime, 1000);
 //Start Menu Functionality
 const startBtn = document.getElementById("startBtn");
 const menu = document.getElementById("menu");
+const applications = document.querySelector(".menu-item-options");
+const subMenu = document.querySelector(".menu-sub");
+let isOpen = false;
 
 startBtn.addEventListener("click", () => {
   if (!startBtn.classList.contains("start-menu__border")) {
     menu.style.display = "flex";
   } else {
     menu.style.display = "none";
+    subMenu.classList.remove("active");
+    isOpen = false;
   }
   startBtn.classList.toggle("start-menu__border");
+});
+
+//    Sub-Menu
+
+applications.addEventListener("click", () => {
+  if (!isOpen) {
+    subMenu.classList.add("active");
+    isOpen = true;
+  } else {
+    subMenu.classList.remove("active");
+    isOpen = false;
+  }
 });
 
 //Calculator Math
@@ -115,3 +216,6 @@ calculatorButtons.forEach((btn) => {
     appendToDisplay(btn.textContent);
   });
 });
+
+// Drum Kit
+window.addEventListener("keydown", playSound);
