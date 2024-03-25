@@ -22,7 +22,7 @@ export const calculateResult = () => {
     currentDisplay = result.toString();
     updateDisplay();
   } catch (error) {
-    currentDisplay += "\nError";
+    currentDisplay = "\nError";
     updateDisplay();
   }
   resultDisplay = true;

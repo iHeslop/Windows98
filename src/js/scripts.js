@@ -97,9 +97,9 @@ initializeWindowEvents("notepad", notepad, topBarNotepad);
 const closeButtonCalculator = document.getElementById("closeCalculator");
 const closeButtonDrumKit = document.getElementById("closeDrumKit");
 const closeButtonNotepad = document.getElementById("closeNotepad");
-const iconCalculator = document.getElementById("iconCalculator");
-const iconDrumKit = document.getElementById("iconDrumKit");
-const iconNotepad = document.getElementById("iconNotepad");
+const calculatorIcons = document.querySelectorAll(".icon-calculator");
+const drumkitIcons = document.querySelectorAll(".icon-drumkit");
+const notepadIcons = document.querySelectorAll(".icon-notepad");
 
 const textNotepad = document.getElementById("notepadDisplay");
 
@@ -121,32 +121,55 @@ closeButtonNotepad.addEventListener("click", (e) => {
   notepad.classList.remove("active");
 });
 
-iconDrumKit.addEventListener("click", (e) => {
-  e.preventDefault();
-  drumKit.style.zIndex = 2;
-  calculator.style.zIndex = 1;
-  notepad.style.zIndex = 1;
-  drumKit.classList.remove("hidden");
-  drumKit.classList.add("active");
+drumkitIcons.forEach((icon) => {
+  icon.addEventListener("click", (e) => {
+    e.preventDefault();
+    drumKit.style.zIndex = 2;
+    calculator.style.zIndex = 1;
+    notepad.style.zIndex = 1;
+    drumKit.classList.remove("hidden");
+    drumKit.classList.add("active");
+    if (startBtn.classList.contains("start-menu__border")) {
+      menu.style.display = "none";
+      subMenu.classList.remove("active");
+      isOpen = false;
+      startBtn.classList.toggle("start-menu__border");
+    }
+  });
 });
 
-iconCalculator.addEventListener("click", (e) => {
-  e.preventDefault();
-  calculator.style.zIndex = 2;
-  drumKit.style.zIndex = 1;
-  notepad.style.zIndex = 1;
-  calculator.classList.remove("hidden");
-  calculator.classList.add("active");
+calculatorIcons.forEach((icon) => {
+  icon.addEventListener("click", (e) => {
+    e.preventDefault();
+    calculator.style.zIndex = 2;
+    drumKit.style.zIndex = 1;
+    notepad.style.zIndex = 1;
+    calculator.classList.remove("hidden");
+    calculator.classList.add("active");
+    if (startBtn.classList.contains("start-menu__border")) {
+      menu.style.display = "none";
+      subMenu.classList.remove("active");
+      isOpen = false;
+      startBtn.classList.toggle("start-menu__border");
+    }
+  });
 });
 
-iconNotepad.addEventListener("click", (e) => {
-  e.preventDefault();
-  calculator.style.zIndex = 1;
-  drumKit.style.zIndex = 1;
-  notepad.style.zIndex = 2;
-  notepad.classList.remove("hidden");
-  notepad.classList.add("active");
-  textNotepad.focus();
+notepadIcons.forEach((icon) => {
+  icon.addEventListener("click", (e) => {
+    e.preventDefault();
+    calculator.style.zIndex = 1;
+    drumKit.style.zIndex = 1;
+    notepad.style.zIndex = 2;
+    notepad.classList.remove("hidden");
+    notepad.classList.add("active");
+    if (startBtn.classList.contains("start-menu__border")) {
+      menu.style.display = "none";
+      subMenu.classList.remove("active");
+      isOpen = false;
+      startBtn.classList.toggle("start-menu__border");
+    }
+  });
 });
 
 //Time Setting
