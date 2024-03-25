@@ -50,6 +50,14 @@
         />
         <h3 class="desktop-icon-text">Drum Kit</h3>
       </div>
+      <div class="desktop-icon icon-minesweeper" id="iconMinesweeper">
+        <img
+          class="desktop-icon-image"
+          src="./assets/logos/minesweeper.png"
+          alt="minesweeper"
+        />
+        <h3 class="desktop-icon-text">Minesweeper</h3>
+      </div>
     </section>
 
     <section
@@ -209,11 +217,62 @@
       ></textarea>
     </section>
 
+    <section class="application application-minesweeper" id="minesweeper">
+      <div class="application-topbar topbar" id="topBarMinesweeper">
+        <div class="left-items">
+          <img
+            id="minesweeperIcon"
+            class="minesweeper-icon"
+            src="./assets/logos/minesweeper.png"
+            alt="minesweeper"
+          />
+          <h3>Minesweeper</h3>
+        </div>
+        <div class="right-items">
+          <button class="application-control">_</button>
+          <button class="application-control btn-close" id="closeMinesweeper">
+            x
+          </button>
+        </div>
+      </div>
+
+      <div class="minesweeper-menu">
+        <p>Game</p>
+        <p>Help</p>
+      </div>
+
+      <div class="minesweeper-controls">
+        <div class="minesweeper-controls-flags">20</div>
+        <button class="minesweeper-controls-button">&#128522</button>
+        <div class="minesweeper-controls-timer">0</div>
+      </div>
+
+      <div class="minesweeper-grid"></div>
+    </section>
+
     <section class="menu" id="menu">
       <div class="menu-banner">
         <h3 class="menu-banner-text">Windows <span>98</span></h3>
       </div>
       <div class="menu-list">
+        <div class="menu-item menu-item-options menu-option-games">
+          <div class="left-items">
+            <img
+              id="gamesLogo"
+              src="./assets/logos/games.png"
+              alt="games-logo"
+              class="menu-item-logo"
+            />
+            <h4>Games</h4>
+          </div>
+          <div class="right-items">
+            <img
+              class="menu-item-arrow"
+              src="./assets/TriangleArrow-Right.svg"
+              alt="arrow"
+            />
+          </div>
+        </div>
         <div class="menu-item">
           <div class="left-items">
             <img
@@ -225,18 +284,8 @@
             <h4>Programs</h4>
           </div>
         </div>
-        <div class="menu-item">
-          <div class="left-items">
-            <img
-              id="photosLogo"
-              src="./assets/logos/photos.png"
-              alt="photos-logo"
-              class="menu-item-logo"
-            />
-            <h4>Photos</h4>
-          </div>
-        </div>
-        <div class="menu-item menu-item-options">
+
+        <div class="menu-item menu-item-options menu-option-applications">
           <div class="left-items">
             <img
               id="applicationsLogo"
@@ -257,12 +306,12 @@
         <div class="menu-item">
           <div class="left-items">
             <img
-              id="gamesLogo"
-              src="./assets/logos/games.png"
-              alt="games-logo"
+              id="photosLogo"
+              src="./assets/logos/photos.png"
+              alt="photos-logo"
               class="menu-item-logo"
             />
-            <h4>Games</h4>
+            <h4>Photos</h4>
           </div>
         </div>
         <div class="menu-item">
@@ -332,7 +381,7 @@
           </div>
         </div>
       </div>
-      <div class="menu-list menu-sub">
+      <div class="menu-list menu-sub applications-sub">
         <div class="menu-item menu-sub-item icon-notepad">
           <div class="left-items">
             <img
@@ -361,6 +410,18 @@
               class="menu-item-logo"
             />
             <h4>Drum Kit</h4>
+          </div>
+        </div>
+      </div>
+      <div class="menu-list menu-sub games-sub">
+        <div class="menu-item menu-sub-item icon-minesweeper">
+          <div class="left-items">
+            <img
+              src="./assets/logos/minesweeper.png"
+              alt="minesweeper-logo"
+              class="menu-item-logo"
+            />
+            <h4>Minesweeper</h4>
           </div>
         </div>
       </div>

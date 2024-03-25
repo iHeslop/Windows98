@@ -7,33 +7,46 @@ import {
 
 import { playSound } from "./drum-utils.js";
 
+import { createBoard, resetBoard } from "./minesweeper-utils.js";
+
 //Application Window Functionality
 
 const calculator = document.getElementById("calculatorApplication");
 const drumKit = document.getElementById("drumkit");
 const notepad = document.getElementById("notepad");
+const minesweeper = document.getElementById("minesweeper");
 
 let activeWindow = null;
 let mousePositions = {};
 let offsets = {};
 let isDown = false;
 
+minesweeper.addEventListener("mousedown", () => {
+  calculator.style.zIndex = 1;
+  drumKit.style.zIndex = 1;
+  notepad.style.zIndex = 1;
+  minesweeper.style.zIndex = 2;
+});
+
 calculator.addEventListener("mousedown", () => {
   calculator.style.zIndex = 2;
   drumKit.style.zIndex = 1;
   notepad.style.zIndex = 1;
+  minesweeper.style.zIndex = 1;
 });
 
 drumKit.addEventListener("mousedown", () => {
   calculator.style.zIndex = 1;
   drumKit.style.zIndex = 2;
   notepad.style.zIndex = 1;
+  minesweeper.style.zIndex = 1;
 });
 
 notepad.addEventListener("mousedown", () => {
   calculator.style.zIndex = 1;
   drumKit.style.zIndex = 1;
   notepad.style.zIndex = 2;
+  minesweeper.style.zIndex = 1;
 });
 
 function handleMouseDown(windowId, element, e) {
@@ -84,6 +97,9 @@ function initializeWindowEvents(windowId, element, topBar) {
   document.addEventListener("mouseup", handleMouseUp, true);
 }
 
+const topBarMinesweeper = document.getElementById("topBarMinesweeper");
+initializeWindowEvents("minesweeper", minesweeper, topBarMinesweeper);
+
 const topBarCalculator = document.getElementById("topBarCalculator");
 initializeWindowEvents("calculator", calculator, topBarCalculator);
 
@@ -97,11 +113,19 @@ initializeWindowEvents("notepad", notepad, topBarNotepad);
 const closeButtonCalculator = document.getElementById("closeCalculator");
 const closeButtonDrumKit = document.getElementById("closeDrumKit");
 const closeButtonNotepad = document.getElementById("closeNotepad");
+const closeButtonMinesweeper = document.getElementById("closeMinesweeper");
+
 const calculatorIcons = document.querySelectorAll(".icon-calculator");
 const drumkitIcons = document.querySelectorAll(".icon-drumkit");
 const notepadIcons = document.querySelectorAll(".icon-notepad");
+const minesweeperIcons = document.querySelectorAll(".icon-minesweeper");
 
-const textNotepad = document.getElementById("notepadDisplay");
+closeButtonMinesweeper.addEventListener("click", (e) => {
+  e.preventDefault();
+  minesweeper.classList.add("hidden");
+  minesweeper.classList.remove("active");
+  resetBoard();
+});
 
 closeButtonCalculator.addEventListener("click", (e) => {
   e.preventDefault();
@@ -121,17 +145,37 @@ closeButtonNotepad.addEventListener("click", (e) => {
   notepad.classList.remove("active");
 });
 
+minesweeperIcons.forEach((icon) => {
+  icon.addEventListener("click", (e) => {
+    e.preventDefault();
+    drumKit.style.zIndex = 1;
+    calculator.style.zIndex = 1;
+    notepad.style.zIndex = 1;
+    minesweeper.style.zIndex = 2;
+    minesweeper.classList.remove("hidden");
+    minesweeper.classList.add("active");
+    if (startBtn.classList.contains("start-menu__border")) {
+      menu.style.display = "none";
+      applicationsMenu.classList.remove("active");
+      isOpen = false;
+      startBtn.classList.toggle("start-menu__border");
+    }
+    createBoard();
+  });
+});
+
 drumkitIcons.forEach((icon) => {
   icon.addEventListener("click", (e) => {
     e.preventDefault();
     drumKit.style.zIndex = 2;
     calculator.style.zIndex = 1;
     notepad.style.zIndex = 1;
+    minesweeper.style.zIndex = 1;
     drumKit.classList.remove("hidden");
     drumKit.classList.add("active");
     if (startBtn.classList.contains("start-menu__border")) {
       menu.style.display = "none";
-      subMenu.classList.remove("active");
+      applicationsMenu.classList.remove("active");
       isOpen = false;
       startBtn.classList.toggle("start-menu__border");
     }
@@ -144,11 +188,12 @@ calculatorIcons.forEach((icon) => {
     calculator.style.zIndex = 2;
     drumKit.style.zIndex = 1;
     notepad.style.zIndex = 1;
+    minesweeper.style.zIndex = 1;
     calculator.classList.remove("hidden");
     calculator.classList.add("active");
     if (startBtn.classList.contains("start-menu__border")) {
       menu.style.display = "none";
-      subMenu.classList.remove("active");
+      applicationsMenu.classList.remove("active");
       isOpen = false;
       startBtn.classList.toggle("start-menu__border");
     }
@@ -161,11 +206,12 @@ notepadIcons.forEach((icon) => {
     calculator.style.zIndex = 1;
     drumKit.style.zIndex = 1;
     notepad.style.zIndex = 2;
+    minesweeper.style.zIndex = 1;
     notepad.classList.remove("hidden");
     notepad.classList.add("active");
     if (startBtn.classList.contains("start-menu__border")) {
       menu.style.display = "none";
-      subMenu.classList.remove("active");
+      applicationsMenu.classList.remove("active");
       isOpen = false;
       startBtn.classList.toggle("start-menu__border");
     }
@@ -188,8 +234,10 @@ setInterval(updateDateTime, 1000);
 //Start Menu Functionality
 const startBtn = document.getElementById("startBtn");
 const menu = document.getElementById("menu");
-const applications = document.querySelector(".menu-item-options");
-const subMenu = document.querySelector(".menu-sub");
+const applications = document.querySelector(".menu-option-applications");
+const games = document.querySelector(".menu-option-games");
+const applicationsMenu = document.querySelector(".applications-sub");
+const gamesMenu = document.querySelector(".games-sub");
 let isOpen = false;
 
 startBtn.addEventListener("click", () => {
@@ -197,7 +245,7 @@ startBtn.addEventListener("click", () => {
     menu.style.display = "flex";
   } else {
     menu.style.display = "none";
-    subMenu.classList.remove("active");
+    applicationsMenu.classList.remove("active");
     isOpen = false;
   }
   startBtn.classList.toggle("start-menu__border");
@@ -207,10 +255,20 @@ startBtn.addEventListener("click", () => {
 
 applications.addEventListener("click", () => {
   if (!isOpen) {
-    subMenu.classList.add("active");
+    applicationsMenu.classList.add("active");
     isOpen = true;
   } else {
-    subMenu.classList.remove("active");
+    applicationsMenu.classList.remove("active");
+    isOpen = false;
+  }
+});
+
+games.addEventListener("click", () => {
+  if (!isOpen) {
+    gamesMenu.classList.add("active");
+    isOpen = true;
+  } else {
+    gamesMenu.classList.remove("active");
     isOpen = false;
   }
 });

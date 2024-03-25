@@ -164,16 +164,6 @@
   margin-left: auto;
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
 .desktop {
   display: flex;
   position: absolute;
@@ -218,6 +208,10 @@
   border-left: 4px solid white;
   border-bottom: 4px solid #808080;
   border-right: 4px solid #808080;
+  &-minesweeper {
+    position: absolute;
+    display: none;
+  }
   &-notepad {
     position: absolute;
     display: none;
@@ -372,6 +366,107 @@
   }
 }
 
+.minesweeper {
+  &-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    height: 70px;
+    padding: 10px;
+    border-top: 5px solid #808080;
+    border-left: 5px solid #808080;
+    border-bottom: 5px solid white;
+    border-right: 5px solid white;
+    &-button {
+      background-color: #bdbebd;
+      background-size: contain;
+      font-size: 24px;
+      height: 40px;
+      width: 40px;
+      border-top: 4px solid white;
+      border-left: 4px solid white;
+      border-bottom: 4px solid #808080;
+      border-right: 4px solid #808080;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    &-flags {
+      border-top: 1px solid #808080;
+      border-left: 1px solid #808080;
+      border-bottom: 1px solid white;
+      border-right: 1px solid white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70px;
+      height: 100%;
+      font-weight: bold;
+      background-color: black;
+      color: red;
+      font-size: 28px;
+    }
+    &-timer {
+      border-top: 1px solid #808080;
+      border-left: 1px solid #808080;
+      border-bottom: 1px solid white;
+      border-right: 1px solid white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 70px;
+      height: 100%;
+      font-weight: bold;
+      background-color: black;
+      color: red;
+      font-size: 28px;
+    }
+  }
+
+  &-grid {
+    border-top: 5px solid #808080;
+    border-left: 5px solid #808080;
+    border-bottom: 5px solid white;
+    border-right: 5px solid white;
+    margin: 10px;
+    display: flex;
+    height: 420px;
+    width: 410px;
+    flex-wrap: wrap;
+    &-square {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+      width: 40px;
+      border-top: 4px solid white;
+      border-left: 4px solid white;
+      border-bottom: 4px solid #808080;
+      border-right: 4px solid #808080;
+      font-weight: bold;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  &-checked {
+    border: 1px dotted black;
+  }
+  &-bomb {
+    &-square {
+      background-color: red;
+    }
+  }
+  &-menu {
+    margin: 3px;
+    display: flex;
+    gap: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
+  }
+}
+
 .hidden {
   display: none;
 }
@@ -391,5 +486,15 @@
 .btn {
   &-close {
     cursor: pointer;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
