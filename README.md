@@ -20,3 +20,7 @@ The goal of this project was to recreate a basic Windows98 Operating System, whi
 - HTML
 - CSS/SCSS
 - JavaScript
+
+### Deployed Site:
+
+https://windows98-replica.onrender.com/
