@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/css/styles.css" />
+    <link rel="icon" href="./assets/images/Windows_Logo_(1992-2001).svg" />
+    <script type="module" src="./src/js/scripts.js" defer></script>
+    <title>Windows98 | Replica</title>
+  </head>
+  <body>
+    <div class="bg-image">
+      <img
+        class="bg-logo"
+        src="./assets/images/Windows_Logo_(1992-2001).svg"
+        alt="logo"
+      />
+    </div>
+
+    <section class="desktop">
+      <div class="desktop-icon">
+        <img
+          class="desktop-icon-image"
+          src="./assets/logos/recycle_bin.png"
+          alt="recycle"
+        />
+        <h3 class="desktop-icon-text">Recycle Bin</h3>
+      </div>
+      <div class="desktop-icon icon-notepad" id="iconNotepad">
+        <img
+          class="desktop-icon-image"
+          src="./assets/logos/notepad.png"
+          alt="notepad"
+        />
+        <h3 class="desktop-icon-text">Notepad</h3>
+      </div>
+      <div class="desktop-icon icon-calculator" id="iconCalculator">
+        <img
+          class="desktop-icon-image"
+          src="./assets/logos/calculator.png"
+          alt="calculator"
+        />
+        <h3 class="desktop-icon-text">Calculator</h3>
+      </div>
+      <div class="desktop-icon icon-drumkit" id="iconDrumKit">
+        <img
+          class="desktop-icon-image"
+          src="./assets/logos/music.png"
+          alt="drum"
+        />
+        <h3 class="desktop-icon-text">Drum Kit</h3>
+      </div>
+      <div class="desktop-icon icon-minesweeper" id="iconMinesweeper">
+        <img
+          class="desktop-icon-image"
+          src="./assets/logos/minesweeper.png"
+          alt="minesweeper"
+        />
+        <h3 class="desktop-icon-text">Minesweeper</h3>
+      </div>
+    </section>
+
+    <section
+      class="application application-calculator"
+      id="calculator"
+    >
+      <div class="application-topbar topbar" id="topBarCalculator">
+        <div class="left-items">
+          <img
+            id="calculatorIcon"
+            class="calculator-icon"
+            src="./assets/logos/calculator.png"
+            alt="calculator"
+          />
+          <h3>Calculator</h3>
+        </div>
+        <div class="right-items">
+          <button class="application-control">_</button>
+          <button class="application-control btn-close" id="closeCalculator">
+            x
+          </button>
+        </div>
+      </div>
+
+      <div class="calculator-menu">
+        <p>Edit</p>
+        <p>View</p>
+        <p>Help</p>
+      </div>
+
+      <div class="calculator-display" id="calculatorDisplay">0.</div>
+
+      <div class="calculator-buttons-menu">
+        <button class="calculator-clear">C</button>
+        <button class="calculator-clearlast">CE</button>
+      </div>
+
+      <div class="calculator-buttons">
+        <button class="text__lightblue calculator-btn">7</button>
+        <button class="text__lightblue calculator-btn">8</button>
+        <button class="text__lightblue calculator-btn">9</button>
+        <button class="text__red calculator-btn">/</button>
+        <button class="text__darkblue">sqrt</button>
+      </div>
+      <div class="calculator-buttons">
+        <button class="text__lightblue calculator-btn">4</button>
+        <button class="text__lightblue calculator-btn">5</button>
+        <button class="text__lightblue calculator-btn">6</button>
+        <button class="text__red calculator-btn">*</button>
+        <button class="text__darkblue">%</button>
+      </div>
+      <div class="calculator-buttons">
+        <button class="text__lightblue calculator-btn">1</button>
+        <button class="text__lightblue calculator-btn">2</button>
+        <button class="text__lightblue calculator-btn">3</button>
+        <button class="text__red calculator-btn">-</button>
+        <button class="text__darkblue">1/x</button>
+      </div>
+      <div class="calculator-buttons">
+        <button class="text__lightblue calculator-btn">0</button>
+        <button class="text__lightblue">+/-</button>
+        <button class="text__lightblue calculator-btn">.</button>
+        <button class="text__red calculator-btn">+</button>
+        <button class="text__red calculator-btn-result">=</button>
+      </div>
+    </section>
+
+    <section class="application application-drumkit" id="drumkit">
+      <div class="application-topbar topbar" id="topBarDrumKit">
+        <div class="left-items">
+          <img
+            id="drumIcon"
+            class="drum-icon"
+            src="./assets/logos/music.png"
+            alt="drum"
+          />
+          <h3>Drum Kit</h3>
+        </div>
+        <div class="right-items">
+          <button class="application-control">_</button>
+          <button class="application-control btn-close" id="closeDrumKit">
+            x
+          </button>
+        </div>
+      </div>
+      <div class="drum-list">
+        <div data-key="65" class="drum-key">
+          <kbd>A</kbd>
+          <span class="sound">clap</span>
+        </div>
+        <div data-key="83" class="drum-key">
+          <kbd>S</kbd>
+          <span class="sound">hihat</span>
+        </div>
+        <div data-key="68" class="drum-key">
+          <kbd>D</kbd>
+          <span class="sound">kick</span>
+        </div>
+        <div data-key="70" class="drum-key">
+          <kbd>F</kbd>
+          <span class="sound">openhat</span>
+        </div>
+        <div data-key="71" class="drum-key">
+          <kbd>G</kbd>
+          <span class="sound">boom</span>
+        </div>
+        <div data-key="72" class="drum-key">
+          <kbd>H</kbd>
+          <span class="sound">ride</span>
+        </div>
+        <div data-key="74" class="drum-key">
+          <kbd>J</kbd>
+          <span class="sound">snare</span>
+        </div>
+        <div data-key="75" class="drum-key">
+          <kbd>K</kbd>
+          <span class="sound">tom</span>
+        </div>
+        <div data-key="76" class="drum-key">
+          <kbd>L</kbd>
+          <span class="sound">tink</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="application application-notepad" id="notepad">
+      <div class="application-topbar topbar" id="topBarNotepad">
+        <div class="left-items">
+          <img
+            id="notepadIcon"
+            class="notepad-icon"
+            src="./assets/logos/notepad.png"
+            alt="notepad"
+          />
+          <h3>Untitled - Notepad</h3>
+        </div>
+        <div class="right-items">
+          <button class="application-control">_</button>
+          <button class="application-control btn-close" id="closeNotepad">
+            x
+          </button>
+        </div>
+      </div>
+
+      <div class="notepad-menu">
+        <p>File</p>
+        <p>Edit</p>
+        <p>Search</p>
+        <p>Help</p>
+      </div>
+
+      <textarea
+        class="notepad-display"
+        id="notepadDisplay"
+        rows="20"
+        cols="60"
+      ></textarea>
+    </section>
+
+    <section class="application application-minesweeper" id="minesweeper">
+      <div class="application-topbar topbar" id="topBarMinesweeper">
+        <div class="left-items">
+          <img
+            id="minesweeperIcon"
+            class="minesweeper-icon"
+            src="./assets/logos/minesweeper.png"
+            alt="minesweeper"
+          />
+          <h3>Minesweeper</h3>
+        </div>
+        <div class="right-items">
+          <button class="application-control">_</button>
+          <button class="application-control btn-close" id="closeMinesweeper">
+            x
+          </button>
+        </div>
+      </div>
+
+      <div class="minesweeper-menu">
+        <p>Game</p>
+        <p>Help</p>
+      </div>
+
+      <div class="minesweeper-controls">
+        <div class="minesweeper-controls-flags">20</div>
+        <button class="minesweeper-controls-button">&#128522</button>
+        <div class="minesweeper-controls-timer">0</div>
+      </div>
+
+      <div class="minesweeper-grid"></div>
+    </section>
+
+    <section class="menu" id="menu">
+      <div class="menu-banner">
+        <h3 class="menu-banner-text">Windows <span>98</span></h3>
+      </div>
+      <div class="menu-list">
+        <div class="menu-item menu-item-options menu-option-games">
+          <div class="left-items">
+            <img
+              id="gamesLogo"
+              src="./assets/logos/games.png"
+              alt="games-logo"
+              class="menu-item-logo"
+            />
+            <h4>Games</h4>
+          </div>
+          <div class="right-items">
+            <img
+              class="menu-item-arrow"
+              src="./assets/TriangleArrow-Right.svg"
+              alt="arrow"
+            />
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="left-items">
+            <img
+              id="programsLogo"
+              src="./assets/logos/computer.png"
+              alt="programs-logo"
+              class="menu-item-logo"
+            />
+            <h4>Programs</h4>
+          </div>
+        </div>
+
+        <div class="menu-item menu-item-options menu-option-applications">
+          <div class="left-items">
+            <img
+              id="applicationsLogo"
+              src="./assets/logos/applications.png"
+              alt="applications-logo"
+              class="menu-item-logo"
+            />
+            <h4>Applications</h4>
+          </div>
+          <div class="right-items">
+            <img
+              class="menu-item-arrow"
+              src="./assets/TriangleArrow-Right.svg"
+              alt="arrow"
+            />
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="left-items">
+            <img
+              id="photosLogo"
+              src="./assets/logos/photos.png"
+              alt="photos-logo"
+              class="menu-item-logo"
+            />
+            <h4>Photos</h4>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="left-items">
+            <img
+              id="settingsLogo"
+              src="./assets/logos/settings.png"
+              alt="settings-logo"
+              class="menu-item-logo"
+            />
+            <h4>Settings</h4>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="left-items">
+            <img
+              id="findLogo"
+              src="./assets/logos/find.png"
+              alt="find-logo"
+              class="menu-item-logo"
+            />
+            <h4>Find</h4>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="left-items">
+            <img
+              id="helpLogo"
+              src="./assets/logos/help.png"
+              alt="help-logo"
+              class="menu-item-logo"
+            />
+            <h4>Help</h4>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="left-items">
+            <img
+              id="runLogo"
+              src="./assets/logos/run.png"
+              alt="run-logo"
+              class="menu-item-logo"
+            />
+            <h4>Run</h4>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="left-items">
+            <img
+              id="logOffLogo"
+              src="./assets/logos/log-off.png"
+              alt="logoff-logo"
+              class="menu-item-logo"
+            />
+            <h4>Log off</h4>
+          </div>
+        </div>
+        <div class="menu-item">
+          <div class="left-items">
+            <img
+              id="shutdownLogo"
+              src="./assets/logos/shutdown.png"
+              alt="shutdown-logo"
+              class="menu-item-logo"
+            />
+            <h4>Shutdown</h4>
+          </div>
+        </div>
+      </div>
+      <div class="menu-list menu-sub applications-sub">
+        <div class="menu-item menu-sub-item icon-notepad">
+          <div class="left-items">
+            <img
+              src="./assets/logos/notepad.png"
+              alt="notepad-logo"
+              class="menu-item-logo"
+            />
+            <h4>Notepad</h4>
+          </div>
+        </div>
+        <div class="menu-item menu-sub-item icon-calculator">
+          <div class="left-items">
+            <img
+              src="./assets/logos/calculator.png"
+              alt="calculator"
+              class="menu-item-logo"
+            />
+            <h4>Calculator</h4>
+          </div>
+        </div>
+        <div class="menu-item menu-sub-item icon-drumkit">
+          <div class="left-items">
+            <img
+              src="./assets/logos/music.png"
+              alt="drumkit-logo"
+              class="menu-item-logo"
+            />
+            <h4>Drum Kit</h4>
+          </div>
+        </div>
+      </div>
+      <div class="menu-list menu-sub games-sub">
+        <div class="menu-item menu-sub-item icon-minesweeper">
+          <div class="left-items">
+            <img
+              src="./assets/logos/minesweeper.png"
+              alt="minesweeper-logo"
+              class="menu-item-logo"
+            />
+            <h4>Minesweeper</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="taskbar" id="taskbar">
+      <div class="start-menu" id="startBtn">
+        <img
+          class="start-image"
+          src="./assets/images/Windows_Logo_(1992-2001).svg"
+          alt="logo"
+        />
+        <p>Start</p>
+      </div>
+      <div class="taskbar-clock" id="clock"></div>
+    </footer>
+
+    <audio data-key="65" src="./assets/sounds/clap.wav"></audio>
+    <audio data-key="83" src="./assets/sounds/hihat.wav"></audio>
+    <audio data-key="68" src="./assets/sounds/kick.wav"></audio>
+    <audio data-key="70" src="./assets/sounds/openhat.wav"></audio>
+    <audio data-key="71" src="./assets/sounds/boom.wav"></audio>
+    <audio data-key="72" src="./assets/sounds/ride.wav"></audio>
+    <audio data-key="74" src="./assets/sounds/snare.wav"></audio>
+    <audio data-key="75" src="./assets/sounds/tom.wav"></audio>
+    <audio data-key="76" src="./assets/sounds/tink.wav"></audio>
+  </body>
+</html>

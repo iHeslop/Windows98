@@ -1,0 +1,480 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.text__lightblue {
+  color: #1d1df5;
+}
+.text__darkblue {
+  color: #0c0c7f;
+}
+.text__red {
+  color: red;
+}
+
+.bg-image {
+  background-image: url("../../assets/images/windows-98-background.jpeg");
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  position: absolute;
+}
+.bg-logo {
+  display: block;
+  margin: 0 auto;
+  max-height: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.taskbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  height: 45px;
+  width: 100%;
+  background-color: #bdbebd;
+  border-top: 3px solid white;
+  padding: 5px;
+}
+.taskbar-clock {
+  padding: 5px;
+  border-top: 3px solid #808080;
+  border-left: 3px solid #808080;
+  border-bottom: 3px solid white;
+  border-right: 3px solid white;
+  font-weight: bold;
+}
+
+.start-menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: bold;
+  border-top: 3px solid white;
+  border-left: 3px solid white;
+  border-bottom: 3px solid #808080;
+  border-right: 3px solid #808080;
+  padding-right: 5px;
+}
+.start-menu:hover {
+  cursor: pointer;
+}
+.start-menu__border {
+  border-top: 3px solid #808080;
+  border-left: 3px solid #808080;
+  border-bottom: 3px solid white;
+  border-right: 3px solid white;
+}
+.start-image {
+  width: 30px;
+  transform: rotate(-20deg);
+}
+
+.menu {
+  z-index: 1;
+  display: none;
+  position: absolute;
+  left: 5px;
+  bottom: 42px;
+  animation: fadeIn 0.3s ease-out;
+  animation-fill-mode: forwards;
+}
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  width: 100%;
+  font-size: 14px;
+  gap: 10px;
+}
+.menu-item-options:hover {
+  background-color: #808080;
+  cursor: pointer;
+}
+.menu-item-logo {
+  padding: 5px;
+  height: 60px;
+  width: 60px;
+}
+.menu-item-arrow {
+  margin-right: 10px;
+  height: 15px;
+}
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 250px;
+  background-color: #bdbebd;
+  border-top: 3px solid white;
+  border-bottom: 3px solid #808080;
+  border-right: 3px solid #808080;
+}
+.menu-banner {
+  display: flex;
+  padding: 8px;
+  background-image: linear-gradient(#040381, #1083cf);
+  border-right: 2px solid white;
+  border-top: 3px solid white;
+  border-left: 3px solid white;
+  border-bottom: 3px solid #808080;
+}
+.menu-banner-text {
+  color: white;
+  writing-mode: vertical-rl;
+  text-orientation: sideways-right;
+  transform: rotate(180deg);
+}
+.menu-sub {
+  display: none;
+}
+.menu-sub-item:hover {
+  background-color: #808080;
+  cursor: pointer;
+}
+
+.left-items {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+.right-item {
+  margin-left: auto;
+}
+
+.desktop {
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 0.5%;
+  gap: 12px;
+}
+.desktop-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 100px;
+  gap: 10px;
+}
+.desktop-icon:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.desktop-icon-image {
+  height: 45px;
+  width: 45px;
+}
+.desktop-icon-text {
+  font-weight: 100;
+  color: black;
+  text-shadow: 1px 1px white;
+  font-size: 16px;
+}
+
+.application {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: 30%;
+  left: 30%;
+  background-color: #bdbebd;
+  border-top: 4px solid white;
+  border-left: 4px solid white;
+  border-bottom: 4px solid #808080;
+  border-right: 4px solid #808080;
+}
+.application-minesweeper {
+  position: absolute;
+  display: none;
+}
+.application-notepad {
+  position: absolute;
+  display: none;
+}
+.application-calculator {
+  position: absolute;
+  display: none;
+  height: 370px;
+  width: 320px;
+}
+.application-drumkit {
+  position: absolute;
+  display: none;
+}
+.application-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #040381;
+  color: white;
+  padding-left: 5px;
+  padding-right: 10px;
+}
+.application-control {
+  font-size: 15px;
+  width: 25px;
+  font-weight: 1000;
+  background-color: #bdbebd;
+  border-top: 3px solid white;
+  border-left: 3px solid white;
+  border-bottom: 3px solid #808080;
+  border-right: 3px solid #808080;
+}
+
+.calculator-buttons {
+  display: flex;
+  justify-content: right;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding-right: 10px;
+}
+.calculator-buttons button {
+  width: 50px;
+  height: 40px;
+  background-color: #bdbebd;
+  font-size: 16px;
+  font-weight: bold;
+  border-top: 4px solid white;
+  border-left: 4px solid white;
+  border-bottom: 4px solid #808080;
+  border-right: 4px solid #808080;
+  cursor: pointer;
+}
+.calculator-buttons-menu {
+  display: flex;
+  justify-content: right;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+  gap: 10px;
+}
+.calculator-buttons-menu button {
+  width: 60px;
+  height: 30px;
+  background-color: #bdbebd;
+  font-size: 16px;
+  font-weight: bold;
+  color: #7f1b1b;
+  border-top: 4px solid white;
+  border-left: 4px solid white;
+  border-bottom: 4px solid #808080;
+  border-right: 4px solid #808080;
+  cursor: pointer;
+}
+.calculator-display {
+  margin: 10px;
+  background-color: white;
+  border-top: 4px solid #808080;
+  border-left: 4px solid #808080;
+  border-bottom: 4px solid lightgrey;
+  border-right: 4px solid lightgray;
+  text-align: right;
+  padding: 5px;
+  font-size: 16px;
+  font-weight: 600;
+}
+.calculator-menu {
+  margin: 3px;
+  display: flex;
+  gap: 10px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  border-bottom: 3px solid #808080;
+}
+
+.drum-icon {
+  margin: 5px;
+  height: 35px;
+}
+.drum-list {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+.drum-key {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+  border-top: 4px solid white;
+  border-left: 4px solid white;
+  border-bottom: 4px solid #808080;
+  border-right: 4px solid #808080;
+}
+.drum-key kbd {
+  font-weight: bold;
+  font-size: 24px;
+}
+.drum-key span {
+  margin-top: 5px;
+  font-size: 16px;
+}
+
+.notepad-icon {
+  margin: 5px;
+  height: 35px;
+}
+.notepad-menu {
+  margin: 3px;
+  display: flex;
+  gap: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+.notepad-display {
+  background-color: white;
+  height: 100%;
+  margin: 5px;
+  border-top: 4px solid #808080;
+  border-left: 4px solid #808080;
+  border-bottom: 4px solid lightgrey;
+  border-right: 4px solid lightgray;
+  padding: 5px;
+}
+
+.minesweeper-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+  height: 70px;
+  padding: 10px;
+  border-top: 5px solid #808080;
+  border-left: 5px solid #808080;
+  border-bottom: 5px solid white;
+  border-right: 5px solid white;
+}
+.minesweeper-controls-button {
+  background-color: #bdbebd;
+  background-size: contain;
+  font-size: 24px;
+  height: 40px;
+  width: 40px;
+  border-top: 4px solid white;
+  border-left: 4px solid white;
+  border-bottom: 4px solid #808080;
+  border-right: 4px solid #808080;
+}
+.minesweeper-controls-button:hover {
+  cursor: pointer;
+}
+.minesweeper-controls-flags {
+  border-top: 1px solid #808080;
+  border-left: 1px solid #808080;
+  border-bottom: 1px solid white;
+  border-right: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 100%;
+  font-weight: bold;
+  background-color: black;
+  color: red;
+  font-size: 28px;
+}
+.minesweeper-controls-timer {
+  border-top: 1px solid #808080;
+  border-left: 1px solid #808080;
+  border-bottom: 1px solid white;
+  border-right: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  height: 100%;
+  font-weight: bold;
+  background-color: black;
+  color: red;
+  font-size: 28px;
+}
+.minesweeper-grid {
+  border-top: 5px solid #808080;
+  border-left: 5px solid #808080;
+  border-bottom: 5px solid white;
+  border-right: 5px solid white;
+  margin: 10px;
+  display: flex;
+  height: 420px;
+  width: 410px;
+  flex-wrap: wrap;
+}
+.minesweeper-grid-square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+  border-top: 4px solid white;
+  border-left: 4px solid white;
+  border-bottom: 4px solid #808080;
+  border-right: 4px solid #808080;
+  font-weight: bold;
+}
+.minesweeper-grid-square:hover {
+  cursor: pointer;
+}
+.minesweeper-checked {
+  border: 1px dotted black;
+}
+.minesweeper-bomb-square {
+  background-color: red;
+}
+.minesweeper-menu {
+  margin: 3px;
+  display: flex;
+  gap: 10px;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+  display: flex;
+}
+
+.playing {
+  transform: scale(1);
+  border-top: 4px solid #808080;
+  border-left: 4px solid #808080;
+  border-bottom: 4px solid white;
+  border-right: 4px solid white;
+}
+
+.btn-close {
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/*# sourceMappingURL=styles.css.map */
