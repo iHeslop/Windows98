@@ -159,7 +159,7 @@ const click = (square) => {
   square.classList.add("minesweeper-checked");
 };
 
-// Check nearby squares
+// Check nearby squares ("square" parameter used when recursively calling the click function)
 const checkSquare = (square, currentId) => {
   const isLeftEdge = currentId % width === 0;
   const isRightEdge = currentId % width === width - 1;
@@ -209,7 +209,7 @@ const checkSquare = (square, currentId) => {
 };
 
 // Function for game ending
-const gameOver = (square) => {
+const gameOver = () => {
   isGameOver = true;
   squares.forEach((square) => {
     if (square.classList.contains("minesweeper-bomb")) {

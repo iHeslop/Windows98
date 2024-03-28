@@ -11,7 +11,7 @@ import { createBoard, resetBoard } from "./minesweeper-utils.js";
 
 //Application Window Functionality
 
-const calculator = document.getElementById("calculatorApplication");
+const calculator = document.getElementById("calculator");
 const drumKit = document.getElementById("drumkit");
 const notepad = document.getElementById("notepad");
 const minesweeper = document.getElementById("minesweeper");
@@ -21,32 +21,13 @@ let mousePositions = {};
 let offsets = {};
 let isDown = false;
 
-minesweeper.addEventListener("mousedown", () => {
-  calculator.style.zIndex = 1;
-  drumKit.style.zIndex = 1;
-  notepad.style.zIndex = 1;
-  minesweeper.style.zIndex = 2;
-});
-
-calculator.addEventListener("mousedown", () => {
-  calculator.style.zIndex = 2;
-  drumKit.style.zIndex = 1;
-  notepad.style.zIndex = 1;
-  minesweeper.style.zIndex = 1;
-});
-
-drumKit.addEventListener("mousedown", () => {
-  calculator.style.zIndex = 1;
-  drumKit.style.zIndex = 2;
-  notepad.style.zIndex = 1;
-  minesweeper.style.zIndex = 1;
-});
-
-notepad.addEventListener("mousedown", () => {
-  calculator.style.zIndex = 1;
-  drumKit.style.zIndex = 1;
-  notepad.style.zIndex = 2;
-  minesweeper.style.zIndex = 1;
+const windows = [calculator, drumKit, notepad, minesweeper];
+windows.forEach((window) => {
+  window.addEventListener("mousedown", () => {
+    windows.forEach((w) => {
+      w.style.zIndex = w === window ? 2 : 1;
+    });
+  });
 });
 
 function handleMouseDown(windowId, element, e) {
@@ -110,124 +91,83 @@ const topBarNotepad = document.getElementById("topBarNotepad");
 initializeWindowEvents("notepad", notepad, topBarNotepad);
 
 //Close and Open Applications
-const closeButtonCalculator = document.getElementById("closeCalculator");
-const closeButtonDrumKit = document.getElementById("closeDrumKit");
-const closeButtonNotepad = document.getElementById("closeNotepad");
-const closeButtonMinesweeper = document.getElementById("closeMinesweeper");
+
+const closeButtons = document.querySelectorAll(".btn-close");
+closeButtons.forEach((button) => {
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
+    const targetId = button
+      .getAttribute("id")
+      .replace("close", "")
+      .toLowerCase();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.classList.add("hidden");
+      targetElement.classList.remove("active");
+    }
+    if (targetId === "minesweeper") {
+      resetBoard();
+    }
+  });
+});
 
 const calculatorIcons = document.querySelectorAll(".icon-calculator");
 const drumkitIcons = document.querySelectorAll(".icon-drumkit");
 const notepadIcons = document.querySelectorAll(".icon-notepad");
 const minesweeperIcons = document.querySelectorAll(".icon-minesweeper");
 
-closeButtonMinesweeper.addEventListener("click", (e) => {
-  e.preventDefault();
-  minesweeper.classList.add("hidden");
-  minesweeper.classList.remove("active");
-  resetBoard();
-});
+const iconTypes = {
+  "icon-calculator": {
+    icon: calculatorIcons,
+    element: calculator,
+    zIndex: 2,
+  },
+  "icon-drumkit": {
+    icon: drumkitIcons,
+    element: drumKit,
+    zIndex: 2,
+  },
+  "icon-notepad": {
+    icon: notepadIcons,
+    element: notepad,
+    zIndex: 2,
+  },
+  "icon-minesweeper": {
+    icon: minesweeperIcons,
+    element: minesweeper,
+    zIndex: 2,
+  },
+};
 
-closeButtonCalculator.addEventListener("click", (e) => {
-  e.preventDefault();
-  calculator.classList.add("hidden");
-  calculator.classList.remove("active");
-});
-
-closeButtonDrumKit.addEventListener("click", (e) => {
-  e.preventDefault();
-  drumKit.classList.add("hidden");
-  drumKit.classList.remove("active");
-});
-
-closeButtonNotepad.addEventListener("click", (e) => {
-  e.preventDefault();
-  notepad.classList.add("hidden");
-  notepad.classList.remove("active");
-});
-
-minesweeperIcons.forEach((icon) => {
-  icon.addEventListener("click", (e) => {
-    e.preventDefault();
-    drumKit.style.zIndex = 1;
-    calculator.style.zIndex = 1;
-    notepad.style.zIndex = 1;
-    minesweeper.style.zIndex = 2;
-    minesweeper.classList.remove("hidden");
-    minesweeper.classList.add("active");
-    if (startBtn.classList.contains("start-menu__border")) {
-      menu.style.display = "none";
-      applicationsMenu.classList.remove("active");
-      isOpen = false;
-      startBtn.classList.toggle("start-menu__border");
-    }
-    createBoard();
-  });
-});
-
-drumkitIcons.forEach((icon) => {
-  icon.addEventListener("click", (e) => {
-    e.preventDefault();
-    drumKit.style.zIndex = 2;
-    calculator.style.zIndex = 1;
-    notepad.style.zIndex = 1;
-    minesweeper.style.zIndex = 1;
-    drumKit.classList.remove("hidden");
-    drumKit.classList.add("active");
-    if (startBtn.classList.contains("start-menu__border")) {
-      menu.style.display = "none";
-      applicationsMenu.classList.remove("active");
-      isOpen = false;
-      startBtn.classList.toggle("start-menu__border");
-    }
-  });
-});
-
-calculatorIcons.forEach((icon) => {
-  icon.addEventListener("click", (e) => {
-    e.preventDefault();
-    calculator.style.zIndex = 2;
-    drumKit.style.zIndex = 1;
-    notepad.style.zIndex = 1;
-    minesweeper.style.zIndex = 1;
-    calculator.classList.remove("hidden");
-    calculator.classList.add("active");
-    if (startBtn.classList.contains("start-menu__border")) {
-      menu.style.display = "none";
-      applicationsMenu.classList.remove("active");
-      isOpen = false;
-      startBtn.classList.toggle("start-menu__border");
-    }
-  });
-});
-
-notepadIcons.forEach((icon) => {
-  icon.addEventListener("click", (e) => {
-    e.preventDefault();
-    calculator.style.zIndex = 1;
-    drumKit.style.zIndex = 1;
-    notepad.style.zIndex = 2;
-    minesweeper.style.zIndex = 1;
-    notepad.classList.remove("hidden");
-    notepad.classList.add("active");
-    if (startBtn.classList.contains("start-menu__border")) {
-      menu.style.display = "none";
-      applicationsMenu.classList.remove("active");
-      isOpen = false;
-      startBtn.classList.toggle("start-menu__border");
-    }
+Object.values(iconTypes).forEach(({ icon, element, zIndex }) => {
+  icon.forEach((icon) => {
+    icon.addEventListener("click", (e) => {
+      e.preventDefault();
+      for (const { element: el } of Object.values(iconTypes)) {
+        el.style.zIndex = 1;
+      }
+      element.style.zIndex = zIndex;
+      element.classList.remove("hidden");
+      element.classList.add("active");
+      if (startBtn.classList.contains("start-menu__border")) {
+        menu.style.display = "none";
+        applicationsMenu.classList.remove("active");
+        isOpen = false;
+        startBtn.classList.toggle("start-menu__border");
+      }
+      if (element === minesweeper) {
+        createBoard();
+      }
+    });
   });
 });
 
 //Time Setting
 function updateDateTime() {
   const now = new Date();
-  let hours = now.getHours();
-  const ampm = hours >= 12 ? "PM" : "AM";
-  hours = hours % 12;
-  hours = hours ? hours : 12;
-  const minutes = now.getMinutes().toString().padStart(2, "0");
-  const currentDateTime = `${hours}:${minutes} ${ampm}`;
-  document.querySelector("#clock").textContent = currentDateTime;
+  const options = { hour12: true, hour: "numeric", minute: "2-digit" };
+  const time = now.toLocaleTimeString("EN-us", options);
+  document.querySelector("#clock").textContent = time;
 }
 setInterval(updateDateTime, 1000);
 
