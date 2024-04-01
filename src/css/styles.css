@@ -468,12 +468,45 @@
   cursor: pointer;
 }
 
+.desktop-message {
+  z-index: 10;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: white;
+}
+.desktop-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: black;
+  border: 1px solid black;
+  height: 30%;
+  width: 75%;
+  line-height: 30px;
+  font-size: 18px;
+}
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
   }
   100% {
     opacity: 1;
+  }
+}
+@media (max-width: 1440px) {
+  .desktop-message {
+    display: flex;
+  }
+  main {
+    display: none;
   }
 }
 
